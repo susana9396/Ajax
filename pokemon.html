@@ -1,0 +1,39 @@
+<html>
+   <head>
+       <title>Pokemon</title>
+       <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script> 
+       <script type="text/javascript">
+         
+         
+          $(document).ready(function(){
+            for (var i = 1; i <= 151; i++) {
+                $('.pk').append("<img src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png'/>");
+            }
+        });
+        
+      </script>
+     <style>
+      *{
+        margin:0;
+        padding:0;
+         }
+        #container{
+            height: 1400px;
+            width: 1200px;
+            background-color:#0c0b0be5;
+            margin-left: 100px;
+            color: grey;
+        }
+         img{
+             width: 100px;
+             height: 100px;
+         }
+     </style>
+   </head>
+   <body>
+      <div id=container>
+         <center><h1>151 POKEMONES</h1></center>
+        <div class="pk"></div>
+    </div>
+   </body>
+</html>
