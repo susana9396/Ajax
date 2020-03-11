@@ -9,46 +9,82 @@
                 $('#pokemon').append("<img id='" + i + "'class='pokemon' src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png'/>");
             }
 
-            $('.pokemon').click(function(){
+            $('.pokemon').mouseover(function() {
                 var id = this.id
                 $.get('http://pokeapi.co/api/v2/pokemon/' + id, function(res) {
-                    var html_str = "";
-                    html_str += "<center><img id='" + id + "'class='pokemon' src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + id + ".png'/></center>";
-                    html_str += "<center><h4>Name: " + res['name'] + "</h4></center>";
-                 
-                     $('#pokedex').html(html_str)
+                    var info = "";
+                    info += "<center><img id='" + id + "'class='pokemon' src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + id + ".png'/></center>";
+                    info += "<center><h1>Nombre: " + res['name'] + "</h1></center>";
+                    info += "<center><h1>Peso: " + res['weight'] + "</h1></center>";
+                    info += "<center><h1>Altura: " + res['height'] + "</h1></center>";
+                    info += "<center><h1>Experiencia: " + res['base_experience'] + "</h1></center>";
                     
-                   
+                     $('#pokedex').html(info)
                 },"json");
-            })
+                $( '#pokedex' ).show();
+       
+            });
+            $('.pokemon').mouseout(function() {
+                $( '#pokedex' ).hide();
+           });
 
          });
     </script>
     <style>
-        body{
-            
+       *{ 
+			/*outline: 1px dotted purple; */
+
+		}
+        .container{
+            background-image: linear-gradient(to bottom right, rgb(18, 11, 54), rgb(33, 6, 128));
+            width: 1330px;
+            height: 2000px;
+            margin: auto;
         }
         #pokemon {
-            width: 1200px;
-            height: 300px;
+            width: 1000px;
+            height: 900px;
+            margin-left: 100px;
+            position: absolute;
+            display: inline-block;
+            
+          
+        }
+        .pokemon{
+            background-color: rgb(23, 23, 128);
+            margin: 5px;
+            border-radius: 10px;
         }
 
         #pokedex {
-            width: 27%;
-            background-color:  rgb(111, 0, 255);
-            float: left;
-            height: 400px;
+            width: 150px;
+            background-color:  rgba(72, 28, 129, 0.733);
+            height: 300px;
             width: 280px;
-            margin: 10;
-         
-
+            margin-top: 60px;
+            margin-left: 20px;
+            display: none;
+            position: fixed;
+            border:solid 10px black
+        }
+        h1{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        h2{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            margin-top: 20px;
+            margin-left: 10px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-<div class='row'>
-    <div id='pokemon'></div>
+<div class='container'>
+    <h2>Pokemon</h2>
     <div id='pokedex'></div>
+    <div id='pokemon'></div>
 </div>
 </body>
 </html>
