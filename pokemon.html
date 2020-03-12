@@ -6,8 +6,9 @@
          
          
           $(document).ready(function(){
+            var url="http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"
             for (var i = 1; i <= 151; i++) {
-                $('.pk').append("<img src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png'/>");
+                $('.pk').append("<img src='" + url + i + ".png'/>");
             }
         });
         
