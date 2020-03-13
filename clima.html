@@ -14,12 +14,14 @@
                 const key=",uk&APPID=9cf98ec971ede870f98f87f16ef2a3e0"
                 $('form').submit(function(){
                     $('.info').text($('input:text[name=name]').val());
+                    //alert($('input:text[name=name]').val());
                     ciudad=($('input:text[name=name]').val());
                     //console.log(ciudad)
                 $.get(url + ciudad + key, function(res) {
                     var info="";
-                    info+="<p> Descripción:" + res['weather']['0'['description']]+"</>"
-                    info+="<p> Temperatura:" + res['main']['temp']+"</p>";
+                    info+="<p> Descripción: " + res.weather[0].description + "</p>"
+                    info+="<p> Temperatura: " + res['main']['temp']+"</p>";
+                    info+="<p> Coordenadas:  Longitud: " + res['coord']['lon']+ "  Latitud: " + res['coord']['lat']+"</p>";
                     $('.info').append(info);
                 }, 'json');
                 // don't forget to return false so the page doesn't refreshq
@@ -37,7 +39,7 @@
             <label for="clima">Ciudad</label>
             <input type="text" id="name" name="name" >
             <input type="submit" value="Submit">
-        </form>
+        </form><br>
         <div class='info'></div>
     </body>
 </html>
