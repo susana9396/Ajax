@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CLIMA</title>
+    
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+               
+        // your code here (build up your url)
+                const url=" http://api.openweathermap.org/data/2.5/weather?q="
+                var ciudad=""
+                const key=",uk&APPID=9cf98ec971ede870f98f87f16ef2a3e0"
+                $('form').submit(function(){
+                    $('.info').text($('input:text[name=name]').val());
+                    ciudad=($('input:text[name=name]').val());
+                    //console.log(ciudad)
+                $.get(url + ciudad + key, function(res) {
+                    var info="";
+                    info+="<p> Descripción:" + res['weather']['0'['description']]+"</>"
+                    info+="<p> Temperatura:" + res['main']['temp']+"</p>";
+                    $('.info').append(info);
+                }, 'json');
+                // don't forget to return false so the page doesn't refresh
+                return false;
+            });
+                
+            });
+
+
+
+        </script>
+    </head>
+    <body>
+        <form action="">
+            <label for="clima">Ciudad</label>
+            <input type="text" id="name" name="name" >
+            <input type="submit" value="Submit">
+        </form>
+        <div class='info'></div>
+    </body>
+</html>
